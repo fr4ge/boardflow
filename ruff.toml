@@ -1,0 +1,41 @@
+# SPDX-FileCopyrightText: Chris Wilson <christopher.david.wilson@gmail.com>
+#
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+
+[format]
+docstring-code-format = true
+
+[lint]
+ignore = [
+  # pydocstyle (D)
+  "D203",  # https://docs.astral.sh/ruff/rules/one-blank-line-before-class/
+  "D213",  # https://docs.astral.sh/ruff/rules/multi-line-summary-second-line/
+
+  # flake8-print (T20)
+  "T201",  # https://docs.astral.sh/ruff/rules/print/
+  "T203",  # https://docs.astral.sh/ruff/rules/p-print/
+]
+select = [
+  "ALL",
+]
+
+[lint.pycodestyle]
+max-doc-length = 72
+
+[lint.pydocstyle]
+convention = "google"
+
+[lint.isort]
+known-first-party = [
+  "boardflow",
+]
+lines-between-types = 1
+
+[lint.per-file-ignores]
+"**/tests/**/*" = [
+  # flake8-annotations (ANN)
+  "ANN201",  # https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function/
+
+  # flake8-bandit (S)
+  "S",  # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+]
